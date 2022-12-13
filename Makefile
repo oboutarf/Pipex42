@@ -6,14 +6,14 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 19:35:37 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/12 20:28:25 by oboutarf         ###   ########.fr        #
+#    Updated: 2022/12/13 10:51:29 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME          				= 	pipex
 
-SRCS           				=	main/main.c
+SRCS           				=	main/main.c src/error.c
 
 FIND_INCLD					=	-Iincld
 
