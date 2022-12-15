@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:35:42 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 19:58:14 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/15 22:01:17 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ERR_OUTFILE "Error outfile!\n"
 # define ERR_INFILE "Error infile!\n"
 
-
+// ----------------------- #Includes --------------------------
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -26,6 +26,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+// ----------------------- #Struct ----------------------------
 typedef struct s_ppx
 {
     pid_t       in_pid;
@@ -36,11 +37,17 @@ typedef struct s_ppx
     char        **paths;
     char        *cmd;
 }              t_ppx;
-
-// #Errors
+// ---------------------- #Errors -----------------------------
 void	treat_err(int ac, char **av, t_ppx *ppx);
 void    err_msg(char *err);
-// #FindPath
+// --------------------- #FindPath ----------------------------
 char    **treat_paths(char **env);
-
+// ----------------------- #Free ------------------------------
+char	**mallocrash(char **tab);
+void	free_tab(char **_free_t_);
+void    free_ppx(t_ppx *ppx);
+// ------------------ #Process Childs -------------------------
+void    process_inpid_child(t_ppx *ppx, char **av, char **env);
+void    process_outpid_child(t_ppx *ppx, char **av, char **env);
+// ----------------------- # # # ------------------------------
 #endif

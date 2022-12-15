@@ -6,14 +6,15 @@
 #    By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 19:35:37 by oboutarf          #+#    #+#              #
-#    Updated: 2022/12/15 21:00:09 by oboutarf         ###   ########.fr        #
+#    Updated: 2022/12/15 22:04:19 by oboutarf         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME          				= 	pipex
 
-SRCS           				=	main/main.c src/error.c src/treat_paths.c
+SRCS           				=	main/main.c src/error.c src/paths.c src/free.c \
+								src/process.c \
 
 FIND_INCLD					=	-Iincld
 
@@ -31,7 +32,6 @@ all:        $(NAME)
 
 $(NAME):	$(OBJ)
 			$(CC) $(OBJ) -o $(NAME)
-
 
 clean:
 			$(RM) $(OBJ)

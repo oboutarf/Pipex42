@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/13 10:42:07 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 21:45:39 by oboutarf         ###   ########.fr       */
+/*   Created: 2022/12/15 21:51:00 by oboutarf          #+#    #+#             */
+/*   Updated: 2022/12/15 22:01:38 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include  "pipex.h"
 
-void	treat_err(int ac, char **av, t_ppx *ppx)
+void    process_inpid_child(t_ppx *ppx, char **av, char **env)
 {
-	if (ac != 5)
-		err_msg(ERR_INPUT);
-	ppx->infile = open(av[1], O_RDONLY);
-	if (ppx->infile < 0)
-		err_msg(ERR_INFILE);
-	ppx->outfile = open(av[ac - 1], O_TRUNC | O_CREAT | O_RDWR);
-	if (ppx->outfile < 0)
-		err_msg(ERR_OUTFILE);
-	if (pipe(ppx->pipe_fd) != 0)
-		err_msg(ERR_PIPE);
+
 }
 
-void    err_msg(char *err)
+void    process_outpid_child(t_ppx *ppx, char **av, char **env)
 {
-    perror(err);
-    exit(1);
+    
 }

@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:55:17 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 21:09:22 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/15 21:35:25 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**split_path_env(char *paths, char sep)
 
 	i[0] = 5;
 	i[3] = count_paths_columns(paths);
-	new_path = malloc(sizeof(char *) * i[3]);
+	new_path = malloc(sizeof(char *) * (i[3] + 1));
 	if (!new_path)
 		return (NULL);
 	i[2] = 0;
@@ -55,7 +55,7 @@ char	**split_path_env(char *paths, char sep)
 		i[1] = ft_seplen(paths, i[0], sep);
 		new_path[i[2]] = malloc(sizeof(char) * (i[1] + 1));
 		if (!new_path[i[2]])
-			return (NULL);
+			return (mallocrash(new_path));
 		while (paths[i[0]] != sep)
 		{
 			if (paths[i[0]] == '\0')
@@ -64,9 +64,11 @@ char	**split_path_env(char *paths, char sep)
 			i[0]++;
 			i[4]++;
 		}
+		new_path[i[2]][i[4]] = '\0';
 		i[0]++;
 		i[2]++;
 	}
+	new_path[i[2]] = '\0';
 	return (new_path);
 }
 
