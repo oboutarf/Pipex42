@@ -6,47 +6,26 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:16:34 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/13 18:12:15 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:25:17 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+
 int	main(int ac, char **av, char **env)
 {
-	t_ppx	pipex;
+	t_ppx	*ppx;
 
-	if (ac != 5)
-		message_error(ERR_INPUT);
-	(void)pipex;
-	(void)env;
+	ppx = malloc(sizeof(t_ppx));
+	treat_err(ac, av, ppx);
+	ppx->in_pid = fork();
+
+	printf();
+	printf
+
 	(void)av;
+	(void)ppx;
+	(void)env;
 	return (0);
 }
-
-
-
-
-// #AuthorizedFunctions#
-/*
-
-open
-close
-read
-write
-malloc
-free
-perror
-strerror
-access
-dup
-dup2
-execve
-exit
-fork
-pipe
-unlink
-wait
-waitpid
-
-*/
