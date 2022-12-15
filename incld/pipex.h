@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:35:42 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 15:22:40 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/15 19:58:14 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ typedef struct s_ppx
     char        *cmd;
 }              t_ppx;
 
+// #Errors
 void	treat_err(int ac, char **av, t_ppx *ppx);
 void    err_msg(char *err);
+// #FindPath
+char    **treat_paths(char **env);
 
 #endif
