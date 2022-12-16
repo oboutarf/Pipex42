@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 16:55:17 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 15:48:41 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:22:01 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ int	ft_seplen(char *str, int pos, char sep)
 	return (path_len - pos);
 }
 
+char	**malloc_paths(char **new_path, int *i, char *paths, char sep)
+{
+	i[1] = ft_seplen(paths, i[0], sep);
+	new_path[i[2]] = malloc(sizeof(char) * (i[1] + 1));
+	if (!new_path[i[2]])
+		return (mallocrash(new_path));
+	return (NULL);
+}
+
 char	**split_path_env(char *paths, char sep)
 {
 	char	**new_path;
@@ -51,14 +60,9 @@ char	**split_path_env(char *paths, char sep)
 	while (i[3]-- > 0)
 	{
 		i[4] = 0;
-		i[1] = ft_seplen(paths, i[0], sep);
-		new_path[i[2]] = malloc(sizeof(char) * (i[1] + 1));
-		if (!new_path[i[2]])
-			return (mallocrash(new_path));
-		while (paths[i[0]] != sep)
+		malloc_paths(new_path, i, paths, sep);
+		while (paths[i[0]] != sep && paths[i[0]])
 		{
-			if (paths[i[0]] == '\0')
-				break ;
 			new_path[i[2]][i[4]] = paths[i[0]];
 			i[0]++;
 			i[4]++;
