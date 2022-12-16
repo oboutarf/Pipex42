@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   alloc.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 21:05:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 21:30:45 by oboutarf         ###   ########.fr       */
+/*   Created: 2022/12/16 14:53:51 by oboutarf          #+#    #+#             */
+/*   Updated: 2022/12/16 15:49:09 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**mallocrash(char **tab)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	unsigned char	*s1;
+	size_t			i;
 
 	i = 0;
-	while (tab[i])
+	s1 = (unsigned char *)s;
+	while (i < n)
 	{
-		free(tab[i]);
+		s1[i] = c;
 		i++;
 	}
-	free(tab);
-	return (NULL);
+	return (s1);
 }
 
-void	free_tab(char **_free_t_)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int		j;
+	void	*alloc;
 
-	j = 0;
-	while (_free_t_[j])
+	if (nmemb == 0 || size == 0)
 	{
-		free(_free_t_[j]);
-		j++;
+		nmemb = 1;
+		size = 1;
 	}
-	free(_free_t_);
-}
-
-void    free_ppx(t_ppx *ppx)
-{
-    free_tab(ppx->paths);
-	free(ppx);
+	if (size && (65535 / size) < nmemb)
+		return (NULL);
+	alloc = malloc((size * nmemb));
+	if (!alloc)
+		return (NULL);
+	ft_memset(alloc, '\0', size * nmemb);
+	return (alloc);
 }

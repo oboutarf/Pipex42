@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oscobou <oscobou@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 10:42:07 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 11:46:04 by oscobou          ###   ########.fr       */
+/*   Updated: 2022/12/16 15:49:56 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	treat_err(int ac, char **av, t_ppx *ppx)
 		err_msg(ERR_OUTFILE);
 }
 
-void    err_msg(char *err)
+void	err_msg(char *err)
 {
-    perror(err);
-    exit(1);
+	perror(err);
+	exit(1);
 }
