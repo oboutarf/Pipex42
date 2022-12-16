@@ -6,17 +6,16 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:35:42 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 15:44:58 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/16 21:50:20 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
-# define ERR_PIPE "Couldn't create pipe! Try again!\n"
-# define ERR_INPUT "Invalid number of arguments.\n"
-# define ERR_OUTFILE "Error outfile!\n"
-# define ERR_INFILE "Error infile!\n"
-
+# define ERR_PIPE "Couldn't create pipe! Try again!"
+# define ERR_INPUT "Invalid number of arguments - Exit "
+# define ERR_FILE "Error file "
+# define CMD_NOT_FOUND "Command not found"
 // ----------------------- #Includes --------------------------
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,6 +23,7 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <errno.h>
 # include <fcntl.h>
 
 // ----------------------- #Struct ----------------------------
@@ -46,8 +46,11 @@ void	treat_err(int ac, char **av, t_ppx *ppx);
 void	err_msg(char *err);
 // --------------------- #FindPath ----------------------------
 char	**treat_paths(char **env);
+int		is_path(char *find_path);
 // ----------------------- #Split -----------------------------
 char	**ft_split(char const *s, char c);
+// ----------------------- #Write -----------------------------
+void	ft_putstr_fd(char *s, int fd);
 // ----------------------- #Free ------------------------------
 char	**mallocrash(char **tab);
 void	free_tab(char **_free_t_);

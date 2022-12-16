@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 14:53:51 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 15:49:09 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/16 17:31:43 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ void	*ft_memset(void *s, int c, size_t n)
 		i++;
 	}
 	return (s1);
+}
+
+int	is_path(char *find_path)
+{
+	int		i;
+
+	i = -1;
+	while (find_path[++i])
+		if (find_path[i] == '/')
+			return (1);
+	return (0);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)

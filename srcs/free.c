@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 21:05:20 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 15:56:10 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/16 22:00:34 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ void	free_tab(char **_free_t_)
 	int		j;
 
 	j = -1;
-	while (_free_t_[++j])
-		free(_free_t_[j]);
+	if (_free_t_)
+	{
+		while (_free_t_[++j])
+			free(_free_t_[j]);
+	}
 	free(_free_t_);
 }
 
