@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oscobou <oscobou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:16:34 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 22:00:17 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:46:28 by oscobou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int ac, char **av, char **env)
 	ppx = malloc(sizeof(t_ppx));
 	treat_err(ac, av, ppx);
 	ppx->paths = treat_paths(env);
+	if (pipe(ppx->pipe_fd) != 0)
+		err_msg(ERR_PIPE);
 	ppx->in_pid = fork();
 	if (ppx->in_pid == 0)
 		process_inpid_child(ppx, av, env);

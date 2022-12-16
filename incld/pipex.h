@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oscobou <oscobou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:35:42 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/15 22:01:17 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:46:30 by oscobou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_ppx
     int         infile;
     int         outfile;
     int         pipe_fd[2];
+    char        **cmd_args;
     char        **paths;
     char        *cmd;
 }              t_ppx;
@@ -42,6 +43,8 @@ void	treat_err(int ac, char **av, t_ppx *ppx);
 void    err_msg(char *err);
 // --------------------- #FindPath ----------------------------
 char    **treat_paths(char **env);
+// ----------------------- #Split -----------------------------
+char	**ft_split(char const *s, char c);
 // ----------------------- #Free ------------------------------
 char	**mallocrash(char **tab);
 void	free_tab(char **_free_t_);
