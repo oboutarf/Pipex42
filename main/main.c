@@ -6,11 +6,25 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 20:16:34 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 21:29:53 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/17 04:11:18 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static void	ft_putchar(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+		ft_putchar(s[i++], fd);
+}
 
 int	main(int ac, char **av, char **env)
 {
@@ -33,8 +47,8 @@ int	main(int ac, char **av, char **env)
 	}
 	close(ppx->pipe_fd[0]);
 	close(ppx->pipe_fd[1]);
-	waitpid(ppx->in_pid, NULL, 0);
 	waitpid(ppx->out_pid, NULL, 0);
+	waitpid(ppx->in_pid, NULL, 0);
 	free_ppx(ppx);
 	return (0);
 }

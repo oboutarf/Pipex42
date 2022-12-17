@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:35:42 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 21:50:20 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/17 04:03:32 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_ppx
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 // ---------------------- #Errors -----------------------------
+void	err_messages(char *not_found, char **av);
 void	treat_err(int ac, char **av, t_ppx *ppx);
 void	err_msg(char *err);
 // --------------------- #FindPath ----------------------------

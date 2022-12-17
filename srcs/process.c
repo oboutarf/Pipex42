@@ -6,7 +6,7 @@
 /*   By: oboutarf <oboutarf@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 21:51:00 by oboutarf          #+#    #+#             */
-/*   Updated: 2022/12/16 21:59:25 by oboutarf         ###   ########.fr       */
+/*   Updated: 2022/12/17 04:28:11 by oboutarf         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,16 @@ void	process_inpid_child(t_ppx *ppx, char **av, char **env)
 	close(ppx->pipe_fd[0]);
 	dup2(ppx->infile, STDIN_FILENO);
 	ppx->cmd_args = ft_split(av[2], ' ');
-	ppx->cmd = find_access(ppx);
+	if (ft_strlen(av[2]) > 0)
+		ppx->cmd = find_access(ppx);
+	else
+		ppx->cmd = NULL;
 	if (access(av[2], F_OK) == 0)
 		ppx->cmd = av[2];
+	else if (av[2][0] == '/')
+		return (err_messages(av[2], av));
 	else if (ppx->cmd == NULL)
-		return (err_msg(av[2]), free_tab(ppx->cmd_args));
+		return (err_messages(av[2], av));
 	execve(ppx->cmd, ppx->cmd_args, env);
 }
 
@@ -83,10 +88,15 @@ void	process_outpid_child(t_ppx *ppx, char **av, char **env)
 	close(ppx->pipe_fd[1]);
 	dup2(ppx->outfile, STDOUT_FILENO);
 	ppx->cmd_args = ft_split(av[3], ' ');
-	ppx->cmd = find_access(ppx);
+	if (ft_strlen(av[3]) > 0)
+		ppx->cmd = find_access(ppx);
+	else
+		ppx->cmd = NULL;
 	if (access(av[3], F_OK) == 0)
 		ppx->cmd = av[3];
+	else if (av[3][0] == '/')
+		return (err_messages(av[3], av));
 	else if (ppx->cmd == NULL)
-		return (err_msg(av[3]), free_tab(ppx->cmd_args));
+		return (err_messages(av[3], av));
 	execve(ppx->cmd, ppx->cmd_args, env);
 }
